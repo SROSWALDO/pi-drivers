@@ -1,0 +1,47 @@
+.nav-container{
+    display: flex;
+    background-color: #000000;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    height: 90px;
+    margin-bottom: 15px;
+}
+
+.button-about button{
+    background-color: red;
+    color: white;
+}
+
+.logo{
+    height: 65px;
+}
+
+.logo img{
+    width: 65px;
+}
+
+
+
+.search input{
+    height: 25px;
+    background-color: transparent;
+    color: white;
+    margin-right: 15px;
+    border: none;
+    border-bottom: 2px solid red;
+    width: 250px;
+}
+
+.search button{
+    height: 40px;
+    background-color: red;
+    color: white;
+    width: 100px;
+
+}
+
+input{
+    outline: none;
+}
+

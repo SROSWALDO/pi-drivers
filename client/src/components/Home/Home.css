@@ -1,0 +1,38 @@
+.home{
+    background-image: url(../../assets/stefan-tomas-pavlovic-ferrari-f1-75-teaser.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+    
+}
+
+
+
+.home-container{
+    position: relative;
+    width: 1480px;
+    margin: 0 auto;
+    text-align: center;
+    height: 110vh;
+    z-index: 1;
+}
+
+.combination{
+    display: flex;
+}
+
+.no{
+    margin: 0 auto;
+    color: black;
+    background-color: red;
+    border-radius: 15px;
+}
+
+.home-container span{
+    background-color: black;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 0 6px;
+    
+}

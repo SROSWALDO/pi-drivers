@@ -1,0 +1,30 @@
+Usuario                             Nav Component                            Actions                          Reducer                             Home Component
+ -------                              -------------                          -------                          --------                             --------------
+|                                   |                                       |                                    |                                       |
+|                                   |                                       |                                    |                                       |
+|    Ingresar nombre en campo       |   Manejar cambio en el campo de        |                                    |                                       |
+|     de búsqueda                   |    búsqueda (onChange)                 |                                    |                                       |
+|                                   |     - Actualizar estado local          |                                    |                                       |
+|                                   |       del nombre de búsqueda           |                                    |                                       |
+|                                   |                                       |                                    |                                       |
+|                                   |   Hacer clic en botón "Buscar"         |    Realizar solicitud API         |                                       |
+|                                   |    (onClick)                           |      para obtener conductores     |                                       |
+|                                   |     - Llamar a función de búsqueda     |       con nombre proporcionado    |                                       |
+|                                   |       pasando el nombre ingresado      |       por el usuario              |                                       |
+|                                   |                                       |                                    |                                       |
+|                                   |                                       |    Actualizar estado global       |    Suscribirse al estado global    |
+|                                   |                                       |      con conductores obtenidos    |    y actualizar estado local con  |
+|                                   |                                       |      (todos y filtrados por       |    conductores filtrados según    |
+|                                   |                                       |        nombre)                    |    nombre ingresado               |
+|                                   |                                       |                                    |                                       |
+|                                   |                                       |                                    |                                       |
+|                                   |                                       |                                    |                                       |
+|                                   |                                       |                                    |                                       |
+|                                   |                                       |                                    |    Renderizar conductores         |
+|                                   |                                       |                                    |    filtrados en función del       |
+|                                   |                                       |                                    |    estado local actualizado       |
+|                                   |                                       |                                    |    (resultado de la búsqueda)     |
+|                                   |                                       |                                    |                                       |
+|                                   |                                       |                                    |                                       |
+|                                   |                                       |                                    |                                       |
+ -------                              -------------                          -------                           --------                             --------------

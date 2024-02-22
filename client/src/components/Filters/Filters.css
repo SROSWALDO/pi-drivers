@@ -1,0 +1,31 @@
+.filters-container{
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.534);
+    backdrop-filter: blur(8px); /* Aplicar un desenfoque */
+}
+
+select{
+    width: 200px;
+    background-color: transparent;
+    border: none;
+    height: 35px;
+    color: white;
+}
+
+option {
+    background-color: #f0f0f0; /* Color de fondo */
+    color: #333; /* Color del texto */
+    padding: 5px; /* Espaciado interior */
+}
+
+/* Estilos CSS para el hover de los options */
+option:hover {
+    background-color: #ccc; /* Color de fondo al pasar el mouse */
+    color: #fff; /* Color del texto al pasar el mouse */
+}
+
+.reset button{
+    background-color: rgb(255, 0, 0);
+    width: 140px;
+    margin-top: 20px;
+}

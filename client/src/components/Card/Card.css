@@ -1,0 +1,45 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Agregamos una sombra para destacar las tarjetas */
+    height: auto; /* Restauramos la altura automática */
+    max-height: 400px; /* Establecemos una altura máxima para las tarjetas */
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinear las imágenes en la parte superior */
+    position: relative;
+    overflow: hidden; /* Ocultar el exceso de imagen */
+    height: 200px; /* Establecer una altura fija para las imágenes */
+}
+
+
+.card-body {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    display: flex;
+    height: 50px;
+    flex-direction: column; /* Alineamos el contenido verticalmente */
+    justify-content: center; /* Centramos el contenido verticalmente */
+    padding: 10px; /* Agregamos un poco de relleno para separar el contenido de los bordes */
+}
+
+.card-header img {
+    width: 100%; /* Ancho automático para mantener la relación de aspecto */
+    height: 100%; /* Ajustamos la altura al 100% del contenedor */
+    object-fit: cover; /* Ajustar el tamaño y recortar la imagen */
+    object-position: center top; /* Centrar la imagen verticalmente en la parte superior */
+    border-radius: 15px 15px 0 0;
+}
+
+.footer-card{
+    background-color: rgba(219, 20, 20, 0.747);
+}
