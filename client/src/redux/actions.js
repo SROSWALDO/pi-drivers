@@ -79,18 +79,25 @@ Por lo tanto, la información que se muestra en tu componente Home está filtrad
 export const filterDrivers = (team) => {
     return async (dispatch) => {
         try {
+            // Obtener todos los conductores de la API
             const response = await axios.get('http://localhost:3001/drivers'); // Obtener todos los conductores de la API
             const allDrivers = response.data;
 
-            const filteredDrivers = allDrivers.filter((driver) => driver.teams && driver.teams.includes(team));
+            /*
+            La condición de filtrado comprueba si el conductor tiene un campo teams definido y si el equipo pasado como argumento está incluido en el array de equipos del conductor (driver.teams.includes(team)).
+             */
 
-            dispatch({ type: DRIVERS_FILTER, payload: filteredDrivers });
+            const filteredDrivers = allDrivers.filter((driver) => driver.teams && driver.teams.includes(team));
+            //Los conductores filtrados se almacenan en la variable filteredDrivers.
+
+            dispatch({ type: DRIVERS_FILTER, payload: filteredDrivers }); //payload - conductores filtrados
 
         } catch (error) {
             console.log(error);
         }
     };
 };
+//En resumen, esta acción filterDrivers realiza una solicitud a la API para obtener todos los conductores, filtra los conductores por el equipo proporcionado y luego envía los conductores filtrados al store de Redux para su actualización en la aplicación.
 
 
 

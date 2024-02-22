@@ -20,8 +20,10 @@ export default function Filters({ allTeams,filterDriversTeam }) {
 
     //* ---------------------------------------
 
+    // Estado local para el equipo seleccionado
     const [selectedTeam, setSelectedTeam] = useState("");
-
+    
+     // Efecto secundario para filtrar conductores cuando cambia el equipo seleccionado
     useEffect(() => {
         if (selectedTeam) { // Si hay un equipo seleccionado
             filterDriversTeam(selectedTeam);

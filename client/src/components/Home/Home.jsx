@@ -15,6 +15,8 @@ export default function Home(props) {
     const allDrivers = useSelector((state) => state.drivers);
     const allTeams = useSelector((state) => state.teams);
 
+    // Función para filtrar conductores por equipo
+
     const filterDriversTeam = (team) => {
         dispatch(filterDrivers(team));
     }
