@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import "./Filters.css"
 import { useEffect, useState } from "react";
-import { orderByName } from "../../redux/actions";
+import { orderByName, orderSource } from "../../redux/actions";
 import React from "react";
 import { getAllDrivers } from "../../redux/actions";
 import { orderByAge } from "../../redux/actions";
@@ -32,8 +32,9 @@ export default function Filters({ allTeams,filterDriversTeam }) {
 
     const handleResetFilter = () => {
         // Reiniciar los filtros estableciendo el tipo de orden y el equipo seleccionado en sus valores predeterminados
-        setOrderType("A");
+        setOrderType("");
         setSelectedTeam("");
+        setApiDbFilter("");
         // Obtener todos los conductores nuevamente para restaurar la lista original
         dispatch(getAllDrivers());
     };
@@ -45,6 +46,13 @@ export default function Filters({ allTeams,filterDriversTeam }) {
         setAgeOrderType(selectedValue);
         dispatch(orderByAge(selectedValue));
     };
+
+    const [apiDbFilter, setApiDbFilter] = useState("All");
+
+    const handleApiDbFilterChange = (e) => {
+        setApiDbFilter(e.target.value);
+        dispatch(orderSource(e.target.value));
+    }
 
 
     return(
@@ -79,6 +87,15 @@ export default function Filters({ allTeams,filterDriversTeam }) {
                 </option>
                 <option value="age ⬇">Menor edad</option>
                 <option value="age ⬆">Mayor edad</option>
+            </select>
+
+            <select value={apiDbFilter} onChange={handleApiDbFilterChange} >
+                <option>
+                    Order by Source
+                </option>
+                <option value="All">All</option>
+                <option value="Api">Api</option>
+                <option value="DB">DB</option>
             </select>
 
             

@@ -89,3 +89,77 @@
   .landing-image img{
     width: 900px;
   }
+
+
+  /* Estilos para dispositivos móviles */
+/* Estilos para dispositivos móviles */
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px; /* Añadido para dar espacio en los bordes */
+  }
+
+  .logo img {
+    max-width: 100px;
+  }
+
+  .button-about button {
+    margin-top: 10px;
+  }
+
+  .landing-body {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    max-width: 90%; /* Establece un ancho máximo para el contenido */
+  }
+
+  .text {
+    width: 100%; /* Ancho completo para asegurar que el contenido esté centrado */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    text-align: center;
+  }
+
+  .description h2 {
+    font-size: 1.5em;
+    width: 350px;
+  }
+
+  .description p {
+    font-size: 0.8em;
+    width: 350px;
+    text-align: center;
+  }
+
+  .button {
+    max-width: 150px;
+  }
+
+  .landing-image {
+    text-align: center;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .landing-image img {
+    max-width: 100%;
+  }
+
+  .landing-container{
+    width: 100%;
+  }
+
+  .button-about{
+    display: none;
+  }
+
+}
+
+
+

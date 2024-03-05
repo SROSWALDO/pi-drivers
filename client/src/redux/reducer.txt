@@ -21,12 +21,23 @@ const reducer = (state = initialState, action) => { // Define el reducer que man
             return{
                 ...state,
                 drivers: action.payload,
+                drivers_copy: action.payload,
             }
-        case "ORDER_BY_NAME":
-        return{
-            ...state,
-            drivers: action.payload
-        }
+            case "ORDER_BY_NAME":
+                const order_copy = [...state.drivers];
+                if(action.payload === "Alphabetic Order") {
+                    order_copy.sort((a, b) => a.name.localeCompare(b.name));
+                }
+                if (action.payload === "A" ){
+                    order_copy.sort((a, b) => a.id - b.id);
+                } 
+                if (action.payload === "D" ){
+                    order_copy.sort((a, b) => b.id - a.id);
+                }
+                return {
+                    ...state,
+                    drivers: order_copy
+                };
         case "ORDER_BY_AGE":
         return{
             ...state,
@@ -52,25 +63,26 @@ const reducer = (state = initialState, action) => { // Define el reducer que man
                     }
                     
                 }
-                case 'ORDER_BY':
-                    let orderedDrivers = [...state.drivers_copy]; // Utiliza la copia original de los conductores
 
-                    switch (action.payload) {
-                        case 'Alphabetic Order':
-                            orderedDrivers.sort((a, b) => a.name.localeCompare(b.name));
-                            break;
-                        case 'A':
-                            orderedDrivers.sort((a, b) => a.name.localeCompare(b.name));
-                            break;
-                        case 'D':
-                            orderedDrivers.sort((a, b) => b.name.localeCompare(a.name));
-                            break;
-                        case 'age ⬇':
-                            orderedDrivers.sort((a, b) => getAgeFromDOB(a.dateOfBirth) - getAgeFromDOB(b.dateOfBirth));
-                            break;
-                        case 'age ⬆':
-                            orderedDrivers.sort((a, b) => getAgeFromDOB(b.dateOfBirth) - getAgeFromDOB(a.dateOfBirth));
-                            break;
+                case 'ORDER_BY':
+                let orderedDrivers = [...state.drivers_copy]; // Utiliza la copia original de los conductores
+
+                switch (action.payload) {
+                case 'Alphabetic Order':
+                    orderedDrivers.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'A':
+                    orderedDrivers.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'D':
+                    orderedDrivers.sort((a, b) => b.name.localeCompare(a.name));
+                    break;
+                case 'age ⬇':
+                    orderedDrivers.sort((a, b) => getAgeFromDOB(a.dateOfBirth) - getAgeFromDOB(b.dateOfBirth));
+                    break;
+                case 'age ⬆':
+                    orderedDrivers.sort((a, b) => getAgeFromDOB(b.dateOfBirth) - getAgeFromDOB(a.dateOfBirth));
+                    break;
         case 'Api':
              // Filtrar conductores por fuente API
              const apiDrivers = state.drivers.filter(driver => typeof driver.id === 'number');
@@ -99,3 +111,20 @@ const reducer = (state = initialState, action) => { // Define el reducer que man
     }
 }
 export default reducer; // Exporta el reducer como el valor por defecto
+
+
+
+
+
+
+
+
+
+
+
+export const orderByName = (orderType) => {
+    return {
+        type: ORDER_BY_NAME,
+        payload: orderType,
+      };
+};

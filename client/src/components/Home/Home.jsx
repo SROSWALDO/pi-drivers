@@ -14,10 +14,13 @@ export default function Home(props) {
     const navigate = useNavigate();
     const allDrivers = useSelector((state) => state.drivers);
     const allTeams = useSelector((state) => state.teams);
+    
 
     // Función para filtrar conductores por equipo
 
     const filterDriversTeam = (team) => {
+        setSearchTerm("")
+        setCurrentPage(1)
         dispatch(filterDrivers(team));
     }
  
@@ -51,10 +54,12 @@ export default function Home(props) {
     const startIndex = (currentPage - 1) * cardsForPage;
     const endIndex = currentPage * cardsForPage;
 
+    
+
     // Filtra los conductores según el término de búsqueda actual
-    const filteredDrivers = allDrivers.filter(driver => {
+    const filteredDrivers = allDrivers && Array.isArray(allDrivers) ? allDrivers.filter(driver => {
         return driver.name.toLowerCase().includes(searchTerm.toLowerCase());
-    });
+    }) : [];
 
     // Obtiene la lista de conductores a mostrar en la página actual
     const driversList = filteredDrivers.slice(startIndex, endIndex);
@@ -75,7 +80,7 @@ export default function Home(props) {
                 <Loading />
             ) : (
                 <>
-                    <Nav onSearch={handleSearch} />
+                    <Nav onSearch={handleSearch} onPageChange={onPageChange} />
                     <div className="home-container">
                     {filteredDrivers.length > 0 && (
                             <Pagination
@@ -87,17 +92,18 @@ export default function Home(props) {
                         )}
                         <div className="combination">
                             {/* Condición para renderizar los filtros solo cuando hay conductores */}
-                            {filteredDrivers.length > 0 && <Filters allDrivers={allDrivers} allTeams={allTeams} filterDriversTeam={filterDriversTeam} />}
+                            {filteredDrivers.length > 0 && <Filters allDrivers={allDrivers} allTeams={allTeams} filterDriversTeam={filterDriversTeam}  />}
                             {/* Renderiza una lista de conductores si la lista filtrada no está vacía */}
                             {filteredDrivers.length > 0 ? (
                                 <Cards drivers={driversList} onClick={onClick} />
                             ) : (
                                 // Renderiza un mensaje indicando que no se encontraron conductores
                                 <h1 className="no">No se encontraron conductores</h1>
+                                
                             )}
                         </div>
 
-                        {/* Condición para renderizar la paginación solo cuando hay conductores */}
+                        
                         
                     </div>
                 </>

@@ -1,16 +1,16 @@
 import axios from 'axios';
-import { DRIVERS_FILTER, GET_DRIVER, GET_DRIVER_BY_NAME, GET_TEAMS } from './action-types';
+import { DRIVERS_FILTER, FILTER_BY_APIDB, FILTER_BY_DB, GET_DRIVER, GET_DRIVER_BY_NAME, GET_TEAMS } from './action-types';
 
-// Acción asíncrona para obtener todos los conductores
-const URL = 'http://localhost:3001/drivers'; // URL de la API para obtener los conductores
 
-export const getAllDrivers = () => { // Define una acción asíncrona getAllDrivers
+const URL = 'http://localhost:3001/drivers'; 
+
+export const getAllDrivers = () => { 
     return async (dispatch) => { // Retorna una función asíncrona que recibe dispatch como argumento
         try {
             const response = await axios.get(URL); // Realiza una solicitud GET para obtener los conductores
             dispatch({ type: GET_DRIVER, payload: response.data }); // Despacha una acción con los conductores obtenidos
         } catch (error) {
-            console.error(error); // Maneja errores de manera adecuada
+            console.error(error); 
         }
     }
 
@@ -166,6 +166,14 @@ export const orderByAge = (orderType) => {
 }
 
 
+export const orderSource = (idType) => {
+    return {
+        type: FILTER_BY_APIDB,
+        payload: idType,
+      };
+};
+
+
 // Función auxiliar para obtener el peso promedio desde el rango
 
 
@@ -174,8 +182,15 @@ export const createDriver = (driver) => {
         try {
             await axios.post("http://localhost:3001/drivers", driver);
         } catch (error) {
-            console.log(error);
+            window.alert(error);
             
         }
+    };
+};
+
+export const orderBy = (orderBy) => {
+    return {
+        type: 'ORDER_BY',
+        payload: orderBy
     };
 };

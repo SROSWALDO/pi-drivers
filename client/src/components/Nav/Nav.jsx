@@ -3,7 +3,7 @@ import logo from "../../assets/logo-f1.png"
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-export default function Nav({ onSearch }) {
+export default function Nav({ onSearch, onPageChange }) {
 
     const [name, setName] = useState(""); // Estado local para almacenar el valor del campo de búsqueda
 
@@ -12,6 +12,8 @@ export default function Nav({ onSearch }) {
         const { value } = event.target;
         setName(value); // Actualiza el estado con el valor del campo de búsqueda
         onSearch(value); // Llama a la función de búsqueda pasada como prop con el valor actual del campo de búsqueda
+        onPageChange(1)
+
     }
 
     // Maneja el clic en el botón de búsqueda
@@ -50,8 +52,18 @@ export default function Nav({ onSearch }) {
                 </div>
             </div>
 
+            <div className="btn-toCreate">
+                <NavLink to="*" >
+                   <button className="btn-create">
+                   Create Driver
+                   </button>
+                </NavLink>
+            </div>
+
             <div className="button-about">
+                <NavLink to="/about" >
                 <button>About Me</button>
+                </NavLink>
             </div>
         </div>
     );

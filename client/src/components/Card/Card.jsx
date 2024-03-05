@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Card({ driver }) {
 
     const dispatch = useDispatch();
-    const { id, name, dateOfBirth, nationality, teams, code, url, image } = driver;
+    const { id, name, dateOfBirth, nationality, teams, image } = driver;
 
     const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export default function Card({ driver }) {
             </div>
             <div className="footer-card">
             <p>{nationality}</p>
-
+            
             </div>
             
             

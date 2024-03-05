@@ -45,3 +45,8 @@ input{
     outline: none;
 }
 
+.btn-create{
+    background-color: red;
+    width: 140px;
+}
+

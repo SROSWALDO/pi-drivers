@@ -8,9 +8,9 @@ const getIDDrivers = async (id) => {
         let driverData;
         let isUUID = false;
 
-        // Check if the ID is a UUID
+        
         if (id.match(/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/)) {
-            // If it's a UUID, search in the local database
+            
             driverData = await Driver.findByPk(id, { include: Team });
             isUUID = true;
         } else {
@@ -23,26 +23,36 @@ const getIDDrivers = async (id) => {
             throw new Error('Driver not found');
         }
 
-        const fullName = `${driverData.name.forename} ${driverData.name.surname}`;
+        let formattedData;
 
-        let teamsFormatted;
         if (isUUID) {
-            teamsFormatted = driverData.Teams.map(team => team.name).join(', ');
+            // Leave data from database unchanged
+            const fullNameDB = `${driverData.name} ${driverData.lastName} `
+            formattedData = {
+                id: driverData.id,
+                name: fullNameDB,
+                lastName: driverData.lastName,
+                description: driverData.description,
+                image: driverData.image,
+                nationality: driverData.nationality,
+                dateOfBirth: driverData.dateOfBirth,
+                teams: driverData.Teams ? driverData.Teams.map(team => team.name).join(', ') : '' // Handle potential undefined Teams
+            };
         } else {
-            teamsFormatted = driverData.teams;
+            // Format data from API as needed
+            const fullName = `${driverData.name.forename} ${driverData.name.surname}`;
+            formattedData = {
+                id: driverData.id,
+                name: fullName,
+                description: driverData.description || `${fullName} is a Big Driver of F1`,
+                image: driverData.image.url,
+                nationality: driverData.nationality,
+                dateOfBirth: driverData.dob,
+                url: driverData.url,
+                code: driverData.code,
+                teams: driverData.teams
+            };
         }
-
-        const formattedData = {
-            id: isUUID ? driverData.id : parseInt(driverData.id),
-            name: fullName,
-            image: driverData.image.url,
-            dateOfBirth: driverData.dob,
-            nationality: driverData.nationality,
-            url: driverData.url,
-            code: driverData.code,
-            teams: teamsFormatted,
-            description: driverData.description || `${fullName} is a Big Driver of F1`
-        };
 
         return formattedData;
     } catch (error) {

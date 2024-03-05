@@ -1,9 +1,9 @@
-const axios = require('axios'); // Importamos el módulo axios para hacer solicitudes HTTP
-const { Team } = require("../db"); // Importamos el modelo Team desde el archivo db.js
+const axios = require('axios'); 
+const { Team } = require("../db"); 
 
-const getAllTeams = async () => { // Definimos una función asíncrona llamada getAllTeams
-    const URL = 'http://localhost:5000/drivers'; // URL de la API de conductores
-    const { data } = await axios.get(URL); // Hacemos una solicitud GET a la API y obtenemos los datos
+const getAllTeams = async () => { 
+    const URL = 'http://localhost:5000/drivers'; 
+    const { data } = await axios.get(URL); 
 
     let teams = []; // Inicializamos un array vacío para almacenar los nombres de equipos únicos
 
@@ -38,4 +38,4 @@ const getAllTeams = async () => { // Definimos una función asíncrona llamada g
     return dbTeamsNames; // Devolvemos los nombres de equipos obtenidos
 };
 
-module.exports = getAllTeams; // Exportamos la función getAllTeams para que esté disponible fuera de este archivo
+module.exports = getAllTeams; 

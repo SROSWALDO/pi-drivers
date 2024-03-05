@@ -2,16 +2,16 @@ const { Driver, Team } = require("../db");
 
 const createDriver = async (driverData) => {
   try {
-    const { name, lastName, description, image, nationality, birthDate, teams } = driverData; // Cambiar "team" a "teams" y permitir que sea una matriz
-
+    const { name, lastName, description, image, nationality, dateOfBirth, teams } = driverData; 
+   console.log(driverData,"Driver data en create driver");
     // Crear el conductor en la base de datos
     const newDriver = await Driver.create({
-      name,
-      lastName,
-      description,
-      image,
-      nationality,
-      birthDate
+      name:name ,
+      lastName:lastName ,
+      description: description ,
+      image:image ,
+      nationality:nationality ,
+      dateOfBirth: dateOfBirth,
     });
 
     // Buscar los equipos en la base de datos

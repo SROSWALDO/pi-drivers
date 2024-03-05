@@ -11,7 +11,9 @@ export default function Landing(second) {
                 <img src={logo} alt="Logo" />
             </div>
             <div className="button-about">
+                <NavLink to="/about" >
                 <button>Contact</button>
+                </NavLink>
             </div>
         </div>
         <div className="landing-body">
